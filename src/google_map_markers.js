@@ -58,17 +58,17 @@ export default class GoogleMapMarkers extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatcher.on('kON_CHANGE', this._onChangeHandler);
-    this.props.dispatcher.on(
+    this.props?.dispatcher?.on('kON_CHANGE', this._onChangeHandler);
+    this.props?.dispatcher?.on(
       'kON_MOUSE_POSITION_CHANGE',
       this._onMouseChangeHandler
     );
-    this.props.dispatcher.on('kON_CLICK', this._onChildClick);
-    this.props.dispatcher.on('kON_MDOWN', this._onChildMouseDown);
+    this.props?.dispatcher?.on('kON_CLICK', this._onChildClick);
+    this.props?.dispatcher?.on('kON_MDOWN', this._onChildMouseDown);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.experimental === true) {
+    if (this.props?.experimental === true) {
       return (
         !shallowEqual(this.props, nextProps) ||
         !shallowEqual(
@@ -85,20 +85,20 @@ export default class GoogleMapMarkers extends Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatcher.removeListener('kON_CHANGE', this._onChangeHandler);
-    this.props.dispatcher.removeListener(
+    this.props?.dispatcher?.removeListener('kON_CHANGE', this._onChangeHandler);
+    this.props?.dispatcher?.removeListener(
       'kON_MOUSE_POSITION_CHANGE',
       this._onMouseChangeHandler
     );
-    this.props.dispatcher.removeListener('kON_CLICK', this._onChildClick);
-    this.props.dispatcher.removeListener('kON_MDOWN', this._onChildMouseDown);
+    this.props?.dispatcher?.removeListener('kON_CLICK', this._onChildClick);
+    this.props?.dispatcher?.removeListener('kON_MDOWN', this._onChildMouseDown);
 
     this.dimensionsCache_ = null;
   }
 
   _getState = () => ({
-    children: this.props.dispatcher.getChildren(),
-    updateCounter: this.props.dispatcher.getUpdateCounter(),
+    children: this.props?.dispatcher?.getChildren(),
+    updateCounter: this.props?.dispatcher?.getUpdateCounter(),
   });
 
   _onChangeHandler = () => {
@@ -191,7 +191,7 @@ export default class GoogleMapMarkers extends Component {
       return;
     }
 
-    const mp = this.props.dispatcher.getMousePosition();
+    const mp = this?.props?.dispatcher.getMousePosition();
 
     if (mp) {
       const distances = [];
