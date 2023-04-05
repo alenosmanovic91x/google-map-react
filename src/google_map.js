@@ -426,10 +426,10 @@ class GoogleMap extends Component {
       }
     }
     // emit actions
-    this.markersDispatcher_.emit('kON_CHANGE');
+    this?.markersDispatcher_?.emit('kON_CHANGE');
 
     if (!shallowEqual(this.props.hoverDistance, prevProps.hoverDistance)) {
-      this.markersDispatcher_.emit('kON_MOUSE_POSITION_CHANGE');
+      this?.markersDispatcher_?.emit('kON_MOUSE_POSITION_CHANGE');
     }
   }
 
@@ -461,7 +461,7 @@ class GoogleMap extends Component {
       this.map_ = null;
       this.maps_ = null;
     }
-    this.markersDispatcher_.dispose();
+    this?.markersDispatcher_?.dispose();
 
     this.resetSizeOnIdle_ = false;
 
@@ -976,7 +976,7 @@ class GoogleMap extends Component {
     if (currTime - this.dragTime_ < K_IDLE_TIMEOUT) {
       this.fireMouseEventOnIdle_ = true;
     } else {
-      this.markersDispatcher_.emit('kON_MOUSE_POSITION_CHANGE');
+      this?.markersDispatcher_?.emit('kON_MOUSE_POSITION_CHANGE');
       this.fireMouseEventOnIdle_ = false;
     }
   };
@@ -1002,7 +1002,7 @@ class GoogleMap extends Component {
           });
         }
 
-        this.markersDispatcher_.emit('kON_CLICK', event);
+        this?.markersDispatcher_?.emit('kON_CLICK', event);
       }
     }
   };
@@ -1022,7 +1022,7 @@ class GoogleMap extends Component {
         // Hovered marker detected at mouse move could be deleted at mouse down time
         // so it will be good to force hovered marker recalculation
         this._onMapMouseMove(event);
-        this.markersDispatcher_.emit('kON_MDOWN', event);
+        this?.markersDispatcher_?.emit('kON_MDOWN', event);
       }
     }
   };
